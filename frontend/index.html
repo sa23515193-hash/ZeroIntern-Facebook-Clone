@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0866ff">
+  <meta name="description" content="FriendSpace — connect with friends and share what matters.">
+  <title>FriendSpace | Social Network</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><span class="brand-mark">f</span><span>FriendSpace</span></div>
+    <label class="searchbox"><span>⌕</span><input id="searchInput" placeholder="Search FriendSpace" aria-label="Search posts and people"></label>
+    <nav class="topnav" aria-label="Main navigation">
+      <button class="nav-btn active" data-view="feed" title="Home">⌂<small>Home</small></button>
+      <button class="nav-btn" data-view="friends" title="Friends">♧<small>Friends</small></button>
+      <button class="nav-btn" data-view="videos" title="Watch">▷<small>Watch</small></button>
+      <button class="nav-btn" data-view="groups" title="Groups">♧<small>Groups</small></button>
+    </nav>
+    <div class="top-actions">
+      <button class="round-btn" id="themeBtn" title="Toggle theme">☾</button>
+      <button class="round-btn notification-trigger" id="notificationBtn" title="Notifications">♢<i></i></button>
+      <button class="avatar avatar-me" id="profileBtn" title="Your profile">S</button>
+    </div>
+  </div>
+  <main class="layout">
+    <aside class="left-sidebar">
+      <button class="side-link"><span class="avatar avatar-me">S</span><b>Sawaira Ijaz</b></button>
+      <button class="side-link"><span class="side-icon blue">♧</span>Friends <span class="count">4</span></button>
+      <button class="side-link"><span class="side-icon purple">▣</span>Memories</button>
+      <button class="side-link"><span class="side-icon red">▤</span>Saved</button>
+      <button class="side-link"><span class="side-icon green">◉</span>Groups</button>
+      <button class="side-link"><span class="side-icon orange">▣</span>Marketplace</button>
+      <button class="side-link"><span class="side-icon blue">▷</span>Watch</button>
+      <div class="sidebar-divider"></div><p class="muted tiny">YOUR SHORTCUTS</p>
+      <button class="side-link"><span class="shortcut">💻</span>Web Developers</button>
+      <button class="side-link"><span class="shortcut">🎮</span>Gaming Community</button>
+      <button class="side-link"><span class="shortcut">📚</span>Computer Science Students</button>
+      <div class="sidebar-foot">Privacy · Terms · Cookies · More<br>FriendSpace © 2026</div>
+    </aside>
+    <section class="center-column" id="mainContent">
+      <div class="stories" id="stories"></div>
+      <section class="composer card">
+        <div class="composer-row"><span class="avatar avatar-me">S</span><button id="openComposer" class="composer-prompt">What's on your mind, Sawaira?</button></div>
+        <div class="composer-tools"><button id="photoShortcut">▧ <span>Photo/video</span></button><button id="feelingShortcut">☺ <span>Feeling/activity</span></button><button id="privacyShortcut">◉ <span>Privacy</span></button></div>
+      </section>
+      <div class="feed-heading"><h2>For you</h2><button id="sortBtn" class="text-btn">⌘ Feed ranking</button></div>
+      <div id="feed"></div>
+    </section>
+    <aside class="right-sidebar">
+      <div class="right-heading"><h3>Sponsored</h3><span class="muted">•••</span></div>
+      <div class="sponsor"><div class="sponsor-art art-one">BUILD<br><strong>YOUR FUTURE</strong></div><div><b>Learn something new</b><p class="muted tiny">Skill up at your own pace.</p><a href="#" class="tiny">learn.example</a></div></div>
+      <div class="sidebar-divider"></div>
+      <div class="right-heading"><h3>Birthdays</h3><span>🎂</span></div>
+      <p class="birthday"><b>Hira Malik</b> and <b>2 others</b> have birthdays today.</p>
+      <div class="sidebar-divider"></div>
+      <div class="right-heading"><h3>Contacts</h3><button class="icon-plain" id="contactsSearch">⌕</button></div>
+      <div id="contacts"></div>
+      <div class="sidebar-divider"></div><h3 class="suggest-title">People you may know</h3><div id="suggestions"></div>
+    </aside>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <dialog id="postDialog" class="modal">
+    <form method="dialog" id="postForm">
+      <header class="modal-header"><h2>Create post</h2><button class="round-btn close-modal" aria-label="Close">×</button></header>
+      <div class="modal-user"><span class="avatar avatar-me">S</span><div><b>Sawaira Ijaz</b><select id="postPrivacy" aria-label="Post privacy"><option value="Public">🌐 Public</option><option value="Friends">♧ Friends</option><option value="Only me">🔒 Only me</option></select></div></div>
+      <textarea id="postText" placeholder="What's on your mind, Sawaira?" rows="5" maxlength="1500"></textarea>
+      <div class="post-extra"><span>▧ Add to your post</span><button type="button" id="emojiBtn">☺ Emoji</button><button type="button" id="addPhotoBtn">🖼 Photo</button></div>
+      <input id="photoUrl" placeholder="Optional image URL (https://…)" class="photo-url">
+      <button type="submit" class="primary-btn publish-btn">Post</button>
+    </form>
+  </dialog>
+  <dialog id="notificationsDialog" class="modal compact-modal">
+    <header class="modal-header"><h2>Notifications</h2><button class="round-btn close-modal">×</button></header><div id="notificationsList"></div>
+  </dialog>
+  <dialog id="profileDialog" class="modal compact-modal">
+    <header class="modal-header"><h2>Your profile</h2><button class="round-btn close-modal">×</button></header>
+    <div class="profile-cover"></div><div class="profile-summary"><span class="avatar avatar-me big-avatar">S</span><h2>Sawaira Ijaz</h2><p class="muted">Computer Science student · Gujrat, Pakistan</p></div>
+    <div class="profile-stats"><div><b id="profilePosts">0</b><span>Posts</span></div><div><b>248</b><span>Friends</span></div><div><b>18</b><span>Photos</span></div></div>
+    <label class="field-label">Profile bio<textarea id="bioInput" rows="2">Learning, building, and sharing my journey in tech ✨</textarea></label><button class="primary-btn" id="saveBio">Save profile</button>
+  </dialog>
+  <script src="./config.js"></script><script src="./app.js"></script>
+</body></html>
