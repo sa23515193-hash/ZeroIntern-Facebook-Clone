@@ -1,59 +1,120 @@
-# FriendSpace — Facebook Clone (ZeroIntern Project 5)
+# Facebook Clone — Social Graph & Feed
 
-A responsive social-networking project with a React-style, GitHub Pages-friendly static frontend and an optional Express backend.
+A responsive social networking web application inspired by Facebook, developed as part of the **ZeroIntern Advanced Track — Project 5: Facebook Clone: Social Graph & Feed**.
+
+## Project Overview
+
+This project demonstrates the core structure of a social networking platform, with a frontend interface and a separate backend API built using Node.js and Express.
 
 ## Features
-- Feed with post creation, reactions, comments, sharing and feed ranking
-- Profile panel, friend requests and connection suggestions
-- Notifications panel and privacy controls (Public / Friends / Only me)
-- Search, stories, responsive navigation, dark/light theme
-- Browser demo persists posts and reactions in `localStorage`
-- Optional Express API with REST endpoints and Socket.IO event foundation
-- Backend source lives in this same repository; GitHub Pages publishes only the frontend
 
-## Important deployment note
-**GitHub Pages hosts static frontend files only. It cannot execute Node.js/Express, PostgreSQL, Redis, or Socket.IO.**
-The frontend therefore runs in demo mode using browser `localStorage` when no API is configured. To use the backend, run it locally or deploy it to a Node.js hosting service and configure `frontend/config.js` with the API URL. Do not put database passwords or secrets in frontend files.
+- Responsive social networking interface
+- Social feed and post interactions
+- Friend and connection interface
+- Browser-based demo data using localStorage
+- Separate backend API using Node.js and Express
+- Socket.IO starter support
+- Organized frontend and backend directories
+- GitHub Pages deployment workflow for the frontend
 
-## Run the frontend locally
-Open `frontend/index.html` in a browser, or use VS Code Live Server. No build step required.
+## Technology Stack
 
-## Run the backend locally
-Requirements: Node.js 18+.
-```bash
+**Frontend**
+- HTML5
+- CSS3
+- JavaScript
+- Browser localStorage
+
+**Backend**
+- Node.js
+- Express.js
+- Socket.IO
+
+**Deployment**
+- GitHub
+- GitHub Pages (frontend)
+
+## Project Structure
+
+```text
+ZeroIntern-Facebook-Clone/
+├── frontend/
+│   └── index.html
+├── backend/
+│   ├── package.json
+│   └── README.md
+├── .github/
+│   └── workflows/
+│       └── pages.yml
+├── .gitignore
+└── README.md
+```
+
+## Run the Frontend
+
+1. Open the `frontend` directory.
+2. Open `index.html` in your browser.
+
+Alternatively, from the project root in PowerShell:
+
+```powershell
+cd frontend
+start index.html
+```
+
+## Run the Backend
+
+Make sure Node.js and npm are installed.
+
+Open PowerShell in the project root and run:
+
+```powershell
 cd backend
 npm install
 npm run dev
 ```
-API health check: `http://localhost:5000/api/health`
 
-The starter backend uses an in-memory store so it runs immediately. PostgreSQL and Redis are represented in the architecture notes and can be added for persistent production deployment. Do not claim this in-memory starter is production-scale.
+If the backend starts successfully, test the health endpoint:
 
-## GitHub Pages deployment
-1. Upload the entire `ZeroIntern_Facebook_Clone` folder contents to one GitHub repository.
-2. In GitHub, open **Settings → Pages**.
-3. Under Build and deployment choose **Deploy from a branch**, branch `main`, folder `/frontend`.
-4. Save. Your published URL will be `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
+`http://localhost:5000/api/health`
 
-If GitHub Pages does not offer `/frontend` as a folder option, use GitHub Actions or move/copy the contents of `frontend` to the repository root. This project includes a workflow under `.github/workflows/pages.yml` to publish `frontend/` automatically.
+Refer to `backend/README.md` for backend-specific instructions.
 
-## API endpoints
-- `GET /api/health`
-- `GET /api/posts`
-- `POST /api/posts`
-- `POST /api/posts/:id/reactions`
-- `POST /api/posts/:id/comments`
-- `GET /api/notifications`
-- `GET /api/friends`
-- `POST /api/friends/:id/requests`
+## Deployment
 
-## Feed ranking and privacy tradeoffs
-The demo ranking combines recency, reaction count and comment count. This is intentionally transparent and simple; a production ranking system would incorporate relationship strength, explicit user preferences, integrity signals, diversity and freshness while auditing for feedback loops. Privacy filtering is applied before returning visible posts in the API starter. The in-memory backend is a learning scaffold, not a secure production social network.
+The frontend is configured for GitHub Pages through the workflow in `.github/workflows/pages.yml`.
 
-## Project structure
-```text
-.
-├── frontend/             # Static responsive app published on GitHub Pages
-├── backend/              # Optional Node.js + Express + Socket.IO API
-└── .github/workflows/    # GitHub Pages deployment workflow
-```
+1. Push the project to GitHub.
+2. Open the repository's **Settings → Pages**.
+3. Select **GitHub Actions** as the deployment source.
+4. Check the **Actions** tab for a successful deployment.
+5. Open the published Pages URL shown by GitHub.
+
+GitHub Pages hosts the static frontend only. The backend must be deployed separately to a Node.js-compatible hosting service for public API access.
+
+## Important Notes
+
+- The frontend demo uses browser localStorage for its local demo interactions.
+- The backend is a separate starter API and is not automatically connected to the frontend in the current setup.
+- Backend data is not a persistent production database.
+- This project is intended for learning and demonstration; it is not a production-ready social networking service.
+
+## Learning Outcomes
+
+- Building a responsive web interface
+- Organizing frontend and backend code
+- Creating and testing a Node.js/Express API
+- Understanding social feed and connection UI patterns
+- Publishing a static website with GitHub Pages
+
+## Author
+
+**Sawaira Ijaz**
+
+Computer Science Undergraduate & Researcher
+
+GitHub: https://github.com/sa23515193-hash
+
+---
+
+Developed for the ZeroIntern Advanced Track — Project 5.
